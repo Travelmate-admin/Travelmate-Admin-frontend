@@ -12,8 +12,7 @@
 .brand { display: flex; align-items: center; gap: 12px; padding: 6px 8px 22px; position: relative; }
 .brand-mark {
   width: 42px; height: 42px; border-radius: 12px;
-  background: var(--primary); color: var(--primary-text);
-  display: grid; place-items: center; font-weight: 800; font-size: 1.05rem;
+  object-fit: cover; display: block;
 }
 .brand-name { font-weight: 800; font-size: 1.05rem; line-height: 1.1; }
 .brand-sub { font-size: 0.74rem; color: var(--text-on-dark-muted); }

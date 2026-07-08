@@ -11,9 +11,8 @@
 }
 .login-art-inner { max-width: 360px; position: relative; z-index: 1; }
 .login-logo {
-  width: 60px; height: 60px; border-radius: 16px; background: var(--primary);
-  color: var(--primary-text); display: grid; place-items: center;
-  font-weight: 800; font-size: 1.5rem; margin-bottom: 22px;
+  width: 60px; height: 60px; border-radius: 16px;
+  object-fit: cover; display: block; margin-bottom: 22px;
 }
 .login-art-inner h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.02em; }
 .login-art-inner > p { color: var(--text-on-dark-muted); font-size: 1.05rem; margin-bottom: 28px; }

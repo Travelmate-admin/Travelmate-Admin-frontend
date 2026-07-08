@@ -58,6 +58,11 @@ export const resolveReport = (id, adminNote) =>
 export const blockFromReport = (id, reason) =>
   API.post(`/admin/reports/${id}/block`, { reason }).then((r) => r.data);
 
+// ---------- PRICING / PLANS ----------
+export const getPricing = () => API.get("/admin/pricing").then((r) => r.data);
+export const updatePricing = (payload) =>
+  API.put("/admin/pricing", payload).then((r) => r.data);
+
 // ---------- USERS ----------
 export const getUsers = () => API.get("/admin/users").then((r) => r.data);
 export const blockUser = (phone, reason) =>

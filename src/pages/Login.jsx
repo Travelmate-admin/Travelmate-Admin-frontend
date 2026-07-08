@@ -41,7 +41,7 @@ export default function Login() {
     <div className="login-screen">
       <div className="login-art">
         <div className="login-art-inner">
-          <div className="login-logo">TM</div>
+          <img className="login-logo" src="/favicon.png" alt="TravelMate" />
           <h1>TravelMate</h1>
           <p>Admin Control Center</p>
           <ul>

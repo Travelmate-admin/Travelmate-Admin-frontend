@@ -2,13 +2,14 @@ import { useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import {
-  IconDashboard, IconTicket, IconCar, IconFlag, IconUsers, IconLogout, IconMenu, IconX, IconRupee,
+  IconDashboard, IconTicket, IconCar, IconFlag, IconUsers, IconLogout, IconMenu, IconX, IconRupee, IconPlan,
 } from "./Icons";
 import "./Layout.css";
 
 const NAV = [
   { to: "/", label: "Dashboard", icon: IconDashboard, end: true },
   { to: "/income", label: "Income", icon: IconRupee },
+  { to: "/plans", label: "Plans & Pricing", icon: IconPlan },
   { to: "/coupons", label: "Coupons", icon: IconTicket },
   { to: "/rides", label: "Rides & Bookings", icon: IconCar },
   { to: "/reports", label: "Reports", icon: IconFlag },
@@ -18,6 +19,7 @@ const NAV = [
 const TITLES = {
   "/": "Dashboard",
   "/income": "Income & Revenue",
+  "/plans": "Plans & Pricing",
   "/coupons": "Coupon Management",
   "/rides": "Rides & Bookings",
   "/reports": "User Reports",
@@ -35,7 +37,7 @@ export default function Layout() {
 
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <div className="brand">
-          <div className="brand-mark">TM</div>
+          <img className="brand-mark" src="/favicon.png" alt="TravelMate" />
           <div>
             <div className="brand-name">TravelMate</div>
             <div className="brand-sub">Admin Panel</div>

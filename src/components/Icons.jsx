@@ -41,3 +41,4 @@ export const IconMenu = (p) => (<S {...p}><path d="M4 6h16M4 12h16M4 18h16" /></
 export const IconLoader = (p) => (<S {...p} className="spin"><path d="M12 3a9 9 0 1 0 9 9" /></S>);
 export const IconTrend = (p) => (<S {...p}><path d="m3 17 6-6 4 4 8-8" /><path d="M17 7h4v4" /></S>);
 export const IconRupee = (p) => (<S {...p}><path d="M6 4h12M6 9h12M6 4c5 0 8 1 8 4.5S11 13 6 13c4 2 7 4 9 7" /></S>);
+export const IconPlan = (p) => (<S {...p}><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M3 10h18M8 15h4" /></S>);
