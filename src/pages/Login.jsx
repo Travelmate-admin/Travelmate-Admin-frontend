@@ -86,11 +86,6 @@ export default function Login() {
           <button className="btn btn-primary login-btn" disabled={loading}>
             {loading ? <IconLoader size={18} /> : "Sign in"}
           </button>
-
-          <p className="login-hint">
-            Default credentials: <code>admin</code> / <code>travelmate@admin</code>
-            <br />Change these in the server <code>.env</code>.
-          </p>
         </form>
       </div>
     </div>

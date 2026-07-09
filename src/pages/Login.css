@@ -4,11 +4,6 @@
   background: linear-gradient(150deg, #1a1a4e 0%, #2a2a6e 55%, #6c2bd9 140%);
   color: #fff; display: grid; place-items: center; padding: 40px; position: relative; overflow: hidden;
 }
-.login-art::after {
-  content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,203,5,0.25), transparent 70%);
-  top: -120px; right: -120px;
-}
 .login-art-inner { max-width: 360px; position: relative; z-index: 1; }
 .login-logo {
   width: 60px; height: 60px; border-radius: 16px;
