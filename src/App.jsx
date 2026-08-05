@@ -10,6 +10,7 @@ import Coupons from "./pages/Coupons";
 import Rides from "./pages/Rides";
 import Reports from "./pages/Reports";
 import Users from "./pages/Users";
+import ScrollToTop from "./components/ScrollToTop";
 import { IconLoader } from "./components/Icons";
 
 export default function App() {
@@ -24,6 +25,8 @@ export default function App() {
   }
 
   return (
+    <>
+    <ScrollToTop />
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route
@@ -43,5 +46,6 @@ export default function App() {
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </>
   );
 }
