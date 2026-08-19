@@ -40,6 +40,7 @@ export default function Plans() {
       findRide: {
         unlockFee: Number(form.findRide.unlockFee),
         processingFee: Number(form.findRide.processingFee),
+        dailyPrice: Number(form.findRide.dailyPrice),
       },
     };
     const allNums = [
@@ -47,6 +48,7 @@ export default function Plans() {
       payload.plans.monthly.price, payload.plans.monthly.durationDays,
       payload.plans.yearly.price, payload.plans.yearly.durationDays,
       payload.findRide.unlockFee, payload.findRide.processingFee,
+      payload.findRide.dailyPrice,
     ];
     if (allNums.some((n) => !Number.isFinite(n) || n < 0)) {
       showToast("All values must be a number 0 or greater", "error");
@@ -126,6 +128,20 @@ export default function Plans() {
         </div>
         <div className="muted" style={{ fontSize: "0.82rem", marginTop: 8 }}>
           Users will pay <b>₹{Number.isFinite(findTotal) ? findTotal : "—"}</b> total to unlock a contact.
+        </div>
+
+        <div style={{ borderTop: "1px solid #eee", margin: "18px 0 14px" }} />
+        <h3 style={{ margin: "0 0 4px" }}>Find Ride Daily Plan</h3>
+        <div className="muted" style={{ fontSize: "0.82rem", marginBottom: 16 }}>
+          Price of the Find Ride Daily plan (₹ / 24 hours) that lets a user request rides.
+          This is separate from the Post Ride Daily price.
+        </div>
+        <div className="field-row" style={{ alignItems: "flex-end" }}>
+          <div className="field">
+            <label>Find Ride Daily price (₹ / 24h)</label>
+            <input type="number" min="0" value={form.findRide.dailyPrice ?? 1}
+              onChange={(e) => setFind("dailyPrice", e.target.value)} />
+          </div>
         </div>
       </div>
     </div>
