@@ -8,6 +8,21 @@ const Avatar = ({ name, photo }) =>
   photo ? <img className="avatar" src={photo} alt={name} />
         : <span className="avatar">{(name || "?").trim()[0]?.toUpperCase() || "?"}</span>;
 
+// Show ride times in 12-hour AM/PM form (as the rider entered them), matching
+// the user-facing website. Accepts "HH:MM" 24h and already-formatted strings.
+function fmtTime12(time) {
+  if (time === undefined || time === null || time === "") return "";
+  const str = String(time).trim();
+  if (/[ap]m\s*$/i.test(str)) return str.toUpperCase().replace(/\s+/g, " ");
+  const [hStr = "", mStr = "00"] = str.split(":");
+  let h = parseInt(hStr, 10);
+  if (Number.isNaN(h)) return str;
+  const m = String(parseInt(mStr, 10) || 0).padStart(2, "0");
+  const ap = h >= 12 ? "PM" : "AM";
+  h = h % 12 === 0 ? 12 : h % 12;
+  return `${h}:${m} ${ap}`;
+}
+
 export default function Rides() {
   const { showToast, Toast } = useToast();
   const [rides, setRides] = useState([]);
@@ -109,7 +124,7 @@ export default function Rides() {
                           </div>
                         </div>
                       </td>
-                      <td className="mono" style={{ fontSize: "0.84rem" }}>{r.date}<div className="muted">{r.time}</div></td>
+                      <td className="mono" style={{ fontSize: "0.84rem" }}>{r.date}<div className="muted">{fmtTime12(r.time)}</div></td>
                       <td><span className="badge badge-blue">{r.bookedCount}</span></td>
                       <td><span className="badge badge-green">{r.rodeCount}</span></td>
                       <td className="mono">{r.viewCount}</td>

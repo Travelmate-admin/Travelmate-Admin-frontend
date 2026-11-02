@@ -77,7 +77,7 @@ export default function Plans() {
       <div className="page-head">
         <div>
           <div className="lead">
-            Set the amounts charged on the TravelMate website. Changes apply live —
+            Set the amounts charged on the Vooggly website. Changes apply live —
             users see the new price on their next page load.
           </div>
         </div>

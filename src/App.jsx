@@ -10,6 +10,7 @@ import Coupons from "./pages/Coupons";
 import Rides from "./pages/Rides";
 import Reports from "./pages/Reports";
 import Users from "./pages/Users";
+import BusRoutes from "./pages/BusRoutes";
 import ScrollToTop from "./components/ScrollToTop";
 import { IconLoader } from "./components/Icons";
 
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/rides" element={<Rides />} />
         <Route path="/reports" element={<Reports />} />
         <Route path="/users" element={<Users />} />
+        <Route path="/bus-routes" element={<BusRoutes />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

@@ -50,6 +50,16 @@ export const toggleCoupon = (id, isActive) =>
 export const getRides = () => API.get("/admin/rides").then((r) => r.data);
 export const getBookings = () => API.get("/admin/bookings").then((r) => r.data);
 
+// ---------- BUS ROUTES ----------
+export const getBusRoutes = (q) =>
+  API.get("/admin/bus-routes", { params: q ? { q } : {} }).then((r) => r.data);
+export const createBusRoute = (payload) =>
+  API.post("/admin/bus-routes", payload).then((r) => r.data);
+export const updateBusRoute = (id, payload) =>
+  API.put(`/admin/bus-routes/${id}`, payload).then((r) => r.data);
+export const deleteBusRoute = (id) =>
+  API.delete(`/admin/bus-routes/${id}`).then((r) => r.data);
+
 // ---------- REPORTS ----------
 export const getReports = (status) =>
   API.get("/admin/reports", { params: status ? { status } : {} }).then((r) => r.data);

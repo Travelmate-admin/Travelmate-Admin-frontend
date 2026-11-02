@@ -12,6 +12,7 @@ const NAV = [
   { to: "/plans", label: "Plans & Pricing", icon: IconPlan },
   { to: "/coupons", label: "Coupons", icon: IconTicket },
   { to: "/rides", label: "Rides & Bookings", icon: IconCar },
+  { to: "/bus-routes", label: "Bus Routes", icon: IconCar },
   { to: "/reports", label: "Reports", icon: IconFlag },
   { to: "/users", label: "Users", icon: IconUsers },
 ];
@@ -22,6 +23,7 @@ const TITLES = {
   "/plans": "Plans & Pricing",
   "/coupons": "Coupon Management",
   "/rides": "Rides & Bookings",
+  "/bus-routes": "Bus Routes",
   "/reports": "User Reports",
   "/users": "Users",
 };
@@ -37,9 +39,9 @@ export default function Layout() {
 
       <aside className={`sidebar ${open ? "open" : ""}`}>
         <div className="brand">
-          <img className="brand-mark" src="/favicon.png" alt="TravelMate" />
+          <img className="brand-mark" src="/favicon.png" alt="Vooggly" />
           <div>
-            <div className="brand-name">TravelMate</div>
+            <div className="brand-name">Vooggly</div>
             <div className="brand-sub">Admin Panel</div>
           </div>
           <button className="sidebar-close" onClick={() => setOpen(false)} aria-label="Close menu">

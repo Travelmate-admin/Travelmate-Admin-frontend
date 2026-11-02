@@ -41,8 +41,8 @@ export default function Login() {
     <div className="login-screen">
       <div className="login-art">
         <div className="login-art-inner">
-          <img className="login-logo" src="/favicon.png" alt="TravelMate" />
-          <h1>TravelMate</h1>
+          <img className="login-logo" src="/favicon.png" alt="Vooggly" />
+          <h1>Vooggly</h1>
           <p>Admin Control Center</p>
           <ul>
             <li>Track coupon usage &amp; manage offers</li>
