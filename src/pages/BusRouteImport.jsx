@@ -323,15 +323,17 @@ export default function BusRouteImport({ existing = [], onImported }) {
           </button>
         </div>
 
-        <div className="field" style={{ marginBottom: 14 }}>
-          <label style={{ fontSize: "0.8rem" }}>Import mode</label>
+        <div style={{ marginBottom: 14 }}>
+          <div style={{ fontSize: "0.82rem", fontWeight: 600, color: "var(--text-secondary)", marginBottom: 8 }}>Import mode</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             <label style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer", fontSize: "0.88rem", lineHeight: 1.45 }}>
-              <input type="radio" name="impmode" checked={mode === "add"} onChange={() => setMode("add")} style={{ marginTop: 3, flexShrink: 0 }} />
+              <input type="radio" name="impmode" checked={mode === "add"} onChange={() => setMode("add")}
+                style={{ width: 16, height: 16, minWidth: 16, flex: "0 0 16px", margin: "3px 0 0", padding: 0 }} />
               <span><b>Add New Routes</b> — insert new only; existing routes are skipped (never overwritten)</span>
             </label>
             <label style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer", fontSize: "0.88rem", lineHeight: 1.45 }}>
-              <input type="radio" name="impmode" checked={mode === "update"} onChange={() => setMode("update")} style={{ marginTop: 3, flexShrink: 0 }} />
+              <input type="radio" name="impmode" checked={mode === "update"} onChange={() => setMode("update")}
+                style={{ width: 16, height: 16, minWidth: 16, flex: "0 0 16px", margin: "3px 0 0", padding: 0 }} />
               <span><b>Update Existing Routes</b> — overwrite matching routes &amp; add any new ones</span>
             </label>
           </div>
