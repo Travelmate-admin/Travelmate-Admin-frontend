@@ -5,6 +5,7 @@ import {
 import Modal from "../components/Modal";
 import { useToast } from "../components/Toast";
 import { IconPlus, IconTrash, IconSearch, IconLoader } from "../components/Icons";
+import BusRouteImport from "./BusRouteImport";
 import "../styles/pages.css";
 
 const blankForm = {
@@ -132,9 +133,12 @@ export default function BusRoutes() {
             Verified bus routes users can look up by bus number. Enter the real route — number, start, end and stops in travel order.
           </div>
         </div>
-        <button className="btn btn-primary" onClick={openNew}>
-          <IconPlus size={18} /> Add bus route
-        </button>
+        <div className="flex gap-2" style={{ alignItems: "center" }}>
+          <BusRouteImport existing={routes} onImported={load} />
+          <button className="btn btn-primary" onClick={openNew}>
+            <IconPlus size={18} /> Add bus route
+          </button>
+        </div>
       </div>
 
       <div className="toolbar">

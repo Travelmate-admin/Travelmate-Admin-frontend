@@ -59,6 +59,11 @@ export const updateBusRoute = (id, payload) =>
   API.put(`/admin/bus-routes/${id}`, payload).then((r) => r.data);
 export const deleteBusRoute = (id) =>
   API.delete(`/admin/bus-routes/${id}`).then((r) => r.data);
+// Bulk import (routes already parsed + grouped client-side from Excel/CSV).
+export const importBusRoutes = (payload) =>
+  API.post("/admin/bus-routes/import", payload).then((r) => r.data);
+export const getBusRouteImportHistory = () =>
+  API.get("/admin/bus-routes/import-history").then((r) => r.data);
 
 // ---------- REPORTS ----------
 export const getReports = (status) =>
