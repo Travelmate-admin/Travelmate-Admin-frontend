@@ -36,11 +36,30 @@ const FIELD_SYNONYMS = {
   status: ["status", "active"],
 };
 function headerField(h) {
-  const n = norm(h);
+  const raw = String(h || "").toLowerCase();
+  // Use the PRIMARY label when a header combines two names or has a unit, e.g.
+  // "Bus Number / Route Number" -> "bus number", "Distance (KM)" -> "distance".
+  const primary = norm(raw.split("/")[0].split("(")[0]);
+  const full = norm(raw);
+  // 1) Exact match on the primary label (handles all standard headers cleanly).
   for (const field of Object.keys(FIELD_SYNONYMS)) {
-    if (FIELD_SYNONYMS[field].includes(n)) return field;
+    if (FIELD_SYNONYMS[field].includes(primary)) return field;
   }
-  return null;
+  // 2) Exact match on the full normalized header.
+  for (const field of Object.keys(FIELD_SYNONYMS)) {
+    if (FIELD_SYNONYMS[field].includes(full)) return field;
+  }
+  // 3) Fallback: header contains a synonym (longest synonym wins to avoid
+  //    short-word collisions like "name" inside "stopname").
+  let best = null, bestLen = 0;
+  for (const field of Object.keys(FIELD_SYNONYMS)) {
+    for (const syn of FIELD_SYNONYMS[field]) {
+      if (syn.length >= 5 && (primary.includes(syn) || full.includes(syn)) && syn.length > bestLen) {
+        best = field; bestLen = syn.length;
+      }
+    }
+  }
+  return best;
 }
 
 const searchKeyOf = (busNumber) =>
