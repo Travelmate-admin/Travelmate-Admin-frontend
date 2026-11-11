@@ -53,12 +53,14 @@ function normalize(s) {
   return String(s || "").toLowerCase().replace(/[.\-_/]/g, " ").replace(/\s+/g, " ").trim();
 }
 
+// Accept any place by default; reject only names that clearly belong to another
+// city / district / state. CHENNAI_AREAS is kept only as documentation.
 export function isChennaiPlace(name) {
   const s = normalize(name);
   if (!s) return false;
-  if (OUTSIDE.some((c) => s.includes(c))) return false;
-  return CHENNAI_AREAS.some((a) => s.includes(a));
+  return !OUTSIDE.some((c) => s.includes(c));
 }
+void CHENNAI_AREAS;
 
 // Returns "" if the whole route is within Chennai, else a reason naming the
 // first place outside Chennai.
