@@ -16,12 +16,12 @@
   --surface: #ffffff;
   --surface-2: #f7f8fc;
 
-  /* ---- Text ---- */
-  --text: #1a1a4e;
-  --text-secondary: #5a5b7a;
-  --text-muted: #9ca0b8;
+  /* ---- Text ---- (darkened for stronger contrast / readability) */
+  --text: #141432;
+  --text-secondary: #3a3c5c;
+  --text-muted: #5c6079;
   --text-on-dark: #ffffff;
-  --text-on-dark-muted: #c5c7e0;
+  --text-on-dark-muted: #e4e6f6;
 
   /* ---- Borders ---- */
   --border: #e6e8f0;

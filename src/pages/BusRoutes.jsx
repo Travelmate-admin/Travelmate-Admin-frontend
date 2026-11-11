@@ -6,6 +6,7 @@ import Modal from "../components/Modal";
 import { useToast } from "../components/Toast";
 import { IconPlus, IconTrash, IconSearch, IconLoader } from "../components/Icons";
 import BusRouteImport from "./BusRouteImport";
+import { chennaiRouteError } from "../utils/chennai";
 import "../styles/pages.css";
 
 const blankForm = {
@@ -81,6 +82,16 @@ export default function BusRoutes() {
     setFormErr("");
     if (!form.busNumber.trim() || !form.from.trim() || !form.to.trim()) {
       setFormErr("Bus number, starting location and destination are required.");
+      return;
+    }
+    // Chennai-only restriction: start, end and every stop must be within Chennai.
+    const cErr = chennaiRouteError({
+      from: form.from.trim(),
+      to: form.to.trim(),
+      stops: textToStops(form.stopsText),
+    });
+    if (cErr) {
+      setFormErr(cErr + ". Only routes within Chennai city are allowed.");
       return;
     }
     const payload = {

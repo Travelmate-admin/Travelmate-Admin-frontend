@@ -7,6 +7,7 @@
 import { useState, useCallback } from "react";
 import { importBusRoutes, getBusRouteImportHistory } from "../services/api";
 import { loadSheetJS } from "../utils/sheetjs";
+import { chennaiRouteError } from "../utils/chennai";
 import Modal from "../components/Modal";
 import { useToast } from "../components/Toast";
 import { IconLoader } from "../components/Icons";
@@ -162,6 +163,9 @@ export default function BusRouteImport({ existing = [], onImported }) {
         if (!busNumber) issues.push("Missing Bus Number");
         if (!from) issues.push("Missing Starting Location");
         if (!to) issues.push("Missing Destination");
+        // Chennai-only restriction — reject any place outside Chennai.
+        const cErr = chennaiRouteError({ from, to, stops });
+        if (cErr) issues.push(cErr);
         const exists = existingKeys.has(grp.key);
 
         routes.push({
@@ -321,14 +325,14 @@ export default function BusRouteImport({ existing = [], onImported }) {
 
         <div className="field" style={{ marginBottom: 14 }}>
           <label style={{ fontSize: "0.8rem" }}>Import mode</label>
-          <div style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
-            <label className="flex gap-2" style={{ alignItems: "center", cursor: "pointer", fontSize: "0.88rem" }}>
-              <input type="radio" name="impmode" checked={mode === "add"} onChange={() => setMode("add")} />
+          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+            <label style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer", fontSize: "0.88rem", lineHeight: 1.45 }}>
+              <input type="radio" name="impmode" checked={mode === "add"} onChange={() => setMode("add")} style={{ marginTop: 3, flexShrink: 0 }} />
               <span><b>Add New Routes</b> — insert new only; existing routes are skipped (never overwritten)</span>
             </label>
-            <label className="flex gap-2" style={{ alignItems: "center", cursor: "pointer", fontSize: "0.88rem" }}>
-              <input type="radio" name="impmode" checked={mode === "update"} onChange={() => setMode("update")} />
-              <span><b>Update Existing Routes</b> — overwrite matching routes & add any new ones</span>
+            <label style={{ display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer", fontSize: "0.88rem", lineHeight: 1.45 }}>
+              <input type="radio" name="impmode" checked={mode === "update"} onChange={() => setMode("update")} style={{ marginTop: 3, flexShrink: 0 }} />
+              <span><b>Update Existing Routes</b> — overwrite matching routes &amp; add any new ones</span>
             </label>
           </div>
         </div>
